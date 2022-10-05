@@ -18,5 +18,5 @@ export class UserClass  implements IUser{
     photoURL: string;
 
     //this field is specific for this class eg different role of the user
-    nickname:string;
+    // nickname:string;
 }

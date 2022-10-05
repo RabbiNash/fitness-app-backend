@@ -28,8 +28,10 @@ class App {
 
   private async connectToDB(): Promise<void> {
     try {
+
       await postgresDdClient.authenticate()
-        console.log("database connected successfully !!!");
+      await postgresDdClient.sync({ alter: true });
+      console.log("database connected successfully !!!");
         
     } catch (error) {
       console.log(error)

@@ -5,6 +5,7 @@ const User = postgresDdClient.define("user", {
   userId: {
     type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrementIdentity:true
   },
   displayName: {
     type: DataTypes.STRING,

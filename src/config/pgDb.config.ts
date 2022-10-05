@@ -9,7 +9,8 @@ export class PgDbHelper {
         try {
             this.client = new Sequelize('dashboard', 'postgres', "1311", {
                 host: 'localhost',
-                dialect: "postgres"
+                dialect: "postgres",
+                logging:false
               });
 
               return this.client

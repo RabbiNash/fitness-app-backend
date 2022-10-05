@@ -26,9 +26,15 @@ class App {
   }
 
   private async connectToDB(): Promise<void> {
-    (await PgDbHelper.connect()).authenticate();
+    try {
+        (await PgDbHelper.connect()).authenticate();
 
-    console.log("database connection");
+        console.log("database connected successfully !!!");
+        
+    } catch (error) {
+        
+    }
+  
   }
 
   private catchError(): void {}

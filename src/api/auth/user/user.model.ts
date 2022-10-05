@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import postgresDdClient from "../../../config/pgDb.config";
 
-const User = postgresDdClient.define("report", {
+const User = postgresDdClient.define("user", {
   userId: {
     type: DataTypes.INTEGER,
     primaryKey: true,

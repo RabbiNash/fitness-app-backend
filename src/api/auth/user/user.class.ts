@@ -1,10 +1,7 @@
 /**this file contains the user interface  */
-export class UserClass {
-  id?: number;
-  displayName: string;
-  email: string;
-  password: string;
-  photoURL: string;
+
+export class UserClass  implements IUser{
+
 
   constructor(displayName: string, email: string , password :string , photoURL? :string) {
 
@@ -13,4 +10,10 @@ export class UserClass {
     this.password = password;
     this.photoURL = photoURL !
   }
+    id?: number | undefined;
+    displayName: string;
+    email: string;
+    password: string;
+    photoURL: string;
+    nickname:string;
 }

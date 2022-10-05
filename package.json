@@ -4,6 +4,7 @@
   "description": "This is the backend of fitness app",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node  src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ras D , Dr Ras Makuti",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
-    "@types/morgan": "^1.9.3"
+    "@types/morgan": "^1.9.3",
+    "ts-node": "^10.9.1"
   }
 }

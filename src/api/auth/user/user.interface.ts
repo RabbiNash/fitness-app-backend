@@ -1,4 +1,6 @@
-interface IUser {
+
+
+export default interface IUser {
     id?: number;
     displayName: string;
     email: string;

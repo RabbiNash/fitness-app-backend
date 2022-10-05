@@ -1,4 +1,5 @@
 /**this file contains the user interface  */
+import IUser from "./user.interface"
 
 export class UserClass  implements IUser{
 

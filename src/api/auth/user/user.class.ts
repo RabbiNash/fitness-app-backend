@@ -9,5 +9,8 @@ export class UserClass {
   constructor(displayName: string, email: string , password :string , photoURL? :string) {
 
     this.displayName = displayName;
+    this.email = email;
+    this.password = password;
+    this.photoURL = photoURL !
   }
 }

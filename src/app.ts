@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import apiV1 from "../src/api/index";
-import { PgDbHelper } from "./config/pgDb.config";
+import postgresDdClient from "./config/pgDb.config";
+
 
 class App {
   public express: express.Application;
@@ -27,8 +28,7 @@ class App {
 
   private async connectToDB(): Promise<void> {
     try {
-        (await PgDbHelper.connect()).authenticate();
-
+      await postgresDdClient.authenticate()
         console.log("database connected successfully !!!");
         
     } catch (error) {

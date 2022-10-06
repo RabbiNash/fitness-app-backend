@@ -12,9 +12,6 @@ export default class userController {
 
   public addUserController = async (req: Request, res: Response) => {
     const { displayName, email, password, photoURL } = req.body;
-
-   
-
     let newUser = new UserClass(displayName, email, password, photoURL);
     
     try {
@@ -30,4 +27,25 @@ export default class userController {
       });
     }
   };
+
+
+  //get user by id
+  public getUserController = async (req: Request, res: Response) => {
+    const { displayName, email, password, photoURL } = req.body;
+   
+    
+    try {
+      
+
+      return res.json({
+        success: true,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        msg: `${error}`,
+      });
+    }
+  };
+  
 }

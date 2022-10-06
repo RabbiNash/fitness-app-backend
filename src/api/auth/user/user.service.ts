@@ -15,4 +15,21 @@ export default class Userservice {
 
     return true;
   };
+
+
+  public getUser = async (userId :string):Promise<any> =>{
+
+    try {
+      let userFound  = await UserModel.findByPk(userId)
+    
+      return userFound
+
+    
+    } catch (error) {
+
+      console.log(error)
+      
+    }
+
+  }
 }

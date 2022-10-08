@@ -3,13 +3,14 @@
 
 export class workoutTypeClass  {
   private workoutTypeName:string
-  private Id :string
+  
   private workoutTypeNotes:string =""
+  private workoutCategoryId:string
 
-  constructor(workoutTypeName:string , workoutTypeNotes: string ="" ,Id:string ){
+  constructor(workoutTypeName:string , workoutTypeNotes: string =""  , workoutCategoryId :string ){
     this.workoutTypeName = workoutTypeName ,
     this.workoutTypeNotes = workoutTypeNotes
-    this.Id = Id
+    this.workoutCategoryId  = workoutCategoryId
 
   }
 

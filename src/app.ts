@@ -31,7 +31,7 @@ class App {
     try {
 
       await postgresDdClient.authenticate()
-      await postgresDdClient.sync({ force: true });
+      await postgresDdClient.sync({ alter: true });
       console.log("database connected successfully !!!");
         
     } catch (error) {

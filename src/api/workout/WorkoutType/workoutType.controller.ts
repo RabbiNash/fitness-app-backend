@@ -12,8 +12,8 @@ export default class workoutTypeController {
   }
 
   public addworkoutTypeController = async (req: Request, res: Response) => {
-    const { workoutTypeName , workoutTypeNotes,categoryId } = req.body;
-    let newworkoutType = new workoutTypeClass(workoutTypeName , workoutTypeNotes , categoryId);
+    const { workoutTypeName , workoutTypeNotes,workoutCategoryId } = req.body;
+    let newworkoutType = new workoutTypeClass(workoutTypeName , workoutTypeNotes , workoutCategoryId);
     
     try {
       let workoutTypeResult = await this.workoutTypeService.addworkoutTypeRepository(newworkoutType)
@@ -24,6 +24,7 @@ export default class workoutTypeController {
         workoutType :workoutTypeResult
       });
     } catch (error) {
+      console.log(error)
       return res.status(500).json({
         success: false,
         msg: `${error}`,

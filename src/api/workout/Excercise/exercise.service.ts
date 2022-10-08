@@ -10,6 +10,7 @@ export default class exerciseservice {
   public addexerciseRepository = async (exerciseOptions: ExerciseClass) :Promise<any> => {
     let exercise = await ExerciseModel.create({
       ...exerciseOptions,
+      
       Id:uuidv4()
 
     });

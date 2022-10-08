@@ -12,8 +12,10 @@ export default class exerciseController {
   }
 
   public addexerciseController = async (req: Request, res: Response) => {
-    const { exerciseName , exerciseNotes,weight,reps ,duration ,distance} = req.body;
-    let newexercise = new ExerciseClass(exerciseName , exerciseNotes,weight,reps ,duration,distance );
+    const { exerciseName , exerciseNotes,weight,reps ,duration ,distance ,userId,workoutTypeId} = req.body;
+    let newexercise = new ExerciseClass(exerciseName , exerciseNotes,weight,reps ,duration,distance,userId,workoutTypeId );
+
+    console.log(newexercise)
 
   
     try {

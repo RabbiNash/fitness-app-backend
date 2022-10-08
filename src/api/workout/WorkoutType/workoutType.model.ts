@@ -27,14 +27,22 @@ const WorkoutType = postgresDdClient.define("workout_type", {
  * Associations
  * A Workout type belong to a workout category
  */
+ WorkoutCategory.hasMany(WorkoutType ,{
+  foreignKey:"categoryId"
+ })
 WorkoutType.belongsTo(WorkoutCategory)
-WorkoutCategory.hasMany(WorkoutType)
 
-WorkoutType.hasMany(Exercise)
+
+WorkoutType.hasMany(Exercise , {
+  foreignKey:"workoutId"
+})
 Exercise.belongsTo(WorkoutType)
 
-User.hasMany(Exercise)
-Exercise.belongsTo(User)
+User.hasMany(Exercise, {
+  foreignKey:"userId"
+})
+Exercise.belongsTo(User ,{
+})
 
 
 

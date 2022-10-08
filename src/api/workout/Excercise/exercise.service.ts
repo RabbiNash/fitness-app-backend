@@ -10,17 +10,17 @@ export default class exerciseservice {
   public addexerciseRepository = async (exerciseOptions: ExerciseClass) :Promise<any> => {
     let exercise = await ExerciseModel.create({
       ...exerciseOptions,
-      exerciseId:uuidv4()
+      Id:uuidv4()
 
     });
 
     return exercise
   };
 
-  public getexerciseRepository = async (exerciseId :string):Promise<any> =>{
+  public getexerciseRepository = async (Id :string):Promise<any> =>{
 
     try {
-      let exerciseFound  = await ExerciseModel.findByPk(exerciseId)
+      let exerciseFound  = await ExerciseModel.findByPk(Id)
 
      
     
@@ -57,7 +57,7 @@ export default class exerciseservice {
 
       } , {
         where:{
-          exerciseId :updateOptions.exerciseId
+          Id :updateOptions.Id
         }
       })
     
@@ -72,11 +72,11 @@ export default class exerciseservice {
 
   }
 
-  public deleteexerciseRepository = async (exerciseId:string):Promise<any> =>{
+  public deleteexerciseRepository = async (Id:string):Promise<any> =>{
     try {
       //return the number of destroyed rows
       let deletedexercise  = await ExerciseModel.destroy({where:{
-        exerciseId:exerciseId
+        Id:Id
       }})
 
     

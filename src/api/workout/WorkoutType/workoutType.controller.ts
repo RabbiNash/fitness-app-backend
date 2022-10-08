@@ -12,8 +12,8 @@ export default class workoutTypeController {
   }
 
   public addworkoutTypeController = async (req: Request, res: Response) => {
-    const { workoutTypeName , workoutTypeNotes } = req.body;
-    let newworkoutType = new workoutTypeClass(workoutTypeName , workoutTypeNotes);
+    const { workoutTypeName , workoutTypeNotes,categoryId } = req.body;
+    let newworkoutType = new workoutTypeClass(workoutTypeName , workoutTypeNotes , categoryId);
     
     try {
       let workoutTypeResult = await this.workoutTypeService.addworkoutTypeRepository(newworkoutType)
@@ -34,10 +34,10 @@ export default class workoutTypeController {
 
   //get workoutType by id
   public getworkoutTypeController = async (req: Request, res: Response) => {
-    const { workoutTypeId } = req.params
+    const { Id } = req.params
     try {
 
-      let workoutTypeFound = await this.workoutTypeService.getworkoutTypeRepository(workoutTypeId)
+      let workoutTypeFound = await this.workoutTypeService.getworkoutTypeRepository(Id)
 
       if( workoutTypeFound == null){
         return res.status(400).json({
@@ -108,10 +108,10 @@ export default class workoutTypeController {
 
   public deleteworkoutTypeController = async (req: Request, res: Response) => {
 
-    const { workoutTypeId } = req.params
+    const { Id } = req.params
     try {
 
-      let workoutTypeDeleteResults = await this.workoutTypeService.deleteworkoutTypeRepository(workoutTypeId)
+      let workoutTypeDeleteResults = await this.workoutTypeService.deleteworkoutTypeRepository(Id)
 
 
     

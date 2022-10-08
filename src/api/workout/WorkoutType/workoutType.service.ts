@@ -10,17 +10,17 @@ export default class workoutTypeservice {
   public addworkoutTypeRepository = async (workoutTypeOptions: workoutTypeClass) :Promise<any> => {
     let workoutType = await workoutTypeModel.create({
       ...workoutTypeOptions,
-      workoutTypeId:uuidv4()
+      Id:uuidv4()
 
     });
 
     return workoutType
   };
 
-  public getworkoutTypeRepository = async (workoutTypeId :string):Promise<any> =>{
+  public getworkoutTypeRepository = async (Id :string):Promise<any> =>{
 
     try {
-      let workoutTypeFound  = await workoutTypeModel.findByPk(workoutTypeId)
+      let workoutTypeFound  = await workoutTypeModel.findByPk(Id)
 
      
     
@@ -57,7 +57,7 @@ export default class workoutTypeservice {
 
       } , {
         where:{
-          workoutTypeId :updateOptions.workoutTypeId
+          Id :updateOptions.Id
         }
       })
     
@@ -72,11 +72,11 @@ export default class workoutTypeservice {
 
   }
 
-  public deleteworkoutTypeRepository = async (workoutTypeId:string):Promise<any> =>{
+  public deleteworkoutTypeRepository = async (Id:string):Promise<any> =>{
     try {
       //return the number of destroyed rows
       let deletedworkoutType  = await workoutTypeModel.destroy({where:{
-        workoutTypeId:workoutTypeId
+        Id:Id
       }})
 
     

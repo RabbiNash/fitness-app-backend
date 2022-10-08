@@ -5,10 +5,10 @@ const workoutTypeRouter  = Router()
 
 
 workoutTypeRouter.post("/",new workoutTypeController().addworkoutTypeController)
-workoutTypeRouter.get("/:workoutTypeId", new workoutTypeController().getworkoutTypeController)
+workoutTypeRouter.get("/:Id", new workoutTypeController().getworkoutTypeController)
 workoutTypeRouter.get("/" , new workoutTypeController().getAllworkoutTypeController)
 workoutTypeRouter.patch("/" , new workoutTypeController().upDateworkoutTypeController)
-workoutTypeRouter.delete("/:workoutTypeId" , new workoutTypeController().deleteworkoutTypeController)
+workoutTypeRouter.delete("/:Id" , new workoutTypeController().deleteworkoutTypeController)
 
 
 

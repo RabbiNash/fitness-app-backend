@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const User = postgresDdClient.define("user", {
-  userId: {
+  Id: {
     type: DataTypes.STRING,
     primaryKey: true,
   

@@ -10,17 +10,17 @@ export default class Userservice {
   public addUser = async (userOptions: UserClass) :Promise<Boolean> => {
     let user = await UserModel.create({
       ...userOptions,
-      userId:uuidv4()
+      Id:uuidv4()
 
     });
 
     return true;
   };
 
-  public getUser = async (userId :string):Promise<any> =>{
+  public getUser = async (Id :string):Promise<any> =>{
 
     try {
-      let userFound  = await UserModel.findByPk(userId)
+      let userFound  = await UserModel.findByPk(Id)
     
       return userFound
     } catch (error) {
@@ -55,7 +55,7 @@ export default class Userservice {
 
       } , {
         where:{
-          userId :updateOptions.userId
+          Id :updateOptions.Id
         }
       })
     
@@ -70,11 +70,11 @@ export default class Userservice {
 
   }
 
-  public deleteUserRepository = async (userId:string):Promise<any> =>{
+  public deleteUserRepository = async (Id:string):Promise<any> =>{
     try {
       //return the number of destroyed rows
       let deletedUser  = await UserModel.destroy({where:{
-        userId:userId
+        Id:Id
       }})
 
     

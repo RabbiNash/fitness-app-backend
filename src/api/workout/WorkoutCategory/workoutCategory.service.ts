@@ -10,17 +10,17 @@ export default class workoutCategoryservice {
   public addworkoutCategoryRepository = async (workoutCategoryOptions: workoutCategoryClass) :Promise<any> => {
     let workoutCategory = await workoutCategoryModel.create({
       ...workoutCategoryOptions,
-      workoutCategoryId:uuidv4()
+      Id:uuidv4()
 
     });
 
     return workoutCategory
   };
 
-  public getworkoutCategoryRepository = async (workoutCategoryId :string):Promise<any> =>{
+  public getworkoutCategoryRepository = async (Id :string):Promise<any> =>{
 
     try {
-      let workoutCategoryFound  = await workoutCategoryModel.findByPk(workoutCategoryId)
+      let workoutCategoryFound  = await workoutCategoryModel.findByPk(Id)
     
       return workoutCategoryFound
     } catch (error) {
@@ -55,7 +55,7 @@ export default class workoutCategoryservice {
 
       } , {
         where:{
-          workoutCategoryId :updateOptions.workoutCategoryId
+          Id :updateOptions.Id
         }
       })
     
@@ -70,11 +70,11 @@ export default class workoutCategoryservice {
 
   }
 
-  public deleteworkoutCategoryRepository = async (workoutCategoryId:string):Promise<any> =>{
+  public deleteworkoutCategoryRepository = async (Id:string):Promise<any> =>{
     try {
       //return the number of destroyed rows
       let deletedworkoutCategory  = await workoutCategoryModel.destroy({where:{
-        workoutCategoryId:workoutCategoryId
+        Id:Id
       }})
 
     

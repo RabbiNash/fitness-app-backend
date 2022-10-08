@@ -35,10 +35,10 @@ export default class exerciseController {
 
   //get exercise by id
   public getexerciseController = async (req: Request, res: Response) => {
-    const { exerciseId } = req.params
+    const { Id } = req.params
     try {
 
-      let exerciseFound = await this.exerciseService.getexerciseRepository(exerciseId)
+      let exerciseFound = await this.exerciseService.getexerciseRepository(Id)
 
       if( exerciseFound == null){
         return res.status(400).json({
@@ -109,10 +109,10 @@ export default class exerciseController {
 
   public deleteexerciseController = async (req: Request, res: Response) => {
 
-    const { exerciseId } = req.params
+    const { Id } = req.params
     try {
 
-      let exerciseDeleteResults = await this.exerciseService.deleteexerciseRepository(exerciseId)
+      let exerciseDeleteResults = await this.exerciseService.deleteexerciseRepository(Id)
 
 
     

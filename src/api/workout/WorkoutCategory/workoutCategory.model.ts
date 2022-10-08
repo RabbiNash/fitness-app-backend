@@ -5,7 +5,7 @@ import postgresDdClient from "../../../config/pgDb.config";
 
 
 const WorkoutCategory = postgresDdClient.define("workout_category", {
-  workoutCategoryId: {
+  Id: {
     type: DataTypes.STRING,
     primaryKey: true,
   

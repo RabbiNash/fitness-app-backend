@@ -7,7 +7,7 @@ import User from "../../auth/user/user.model";
 
 
 const WorkoutType = postgresDdClient.define("workout_type", {
-  workoutTypeId: {
+  Id: {
     type: DataTypes.STRING,
     primaryKey: true,
   
@@ -27,22 +27,15 @@ const WorkoutType = postgresDdClient.define("workout_type", {
  * Associations
  * A Workout type belong to a workout category
  */
- WorkoutCategory.hasMany(WorkoutType ,{
-  foreignKey:"categoryId"
- })
+ WorkoutCategory.hasMany(WorkoutType )
 WorkoutType.belongsTo(WorkoutCategory)
 
 
-WorkoutType.hasMany(Exercise , {
-  foreignKey:"workoutId"
-})
+WorkoutType.hasMany(Exercise )
 Exercise.belongsTo(WorkoutType)
 
-User.hasMany(Exercise, {
-  foreignKey:"userId"
-})
-Exercise.belongsTo(User ,{
-})
+User.hasMany(Exercise, )
+Exercise.belongsTo(User )
 
 
 

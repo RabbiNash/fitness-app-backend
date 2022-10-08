@@ -32,15 +32,16 @@ export default class userController {
 
   //get user by id
   public getUserController = async (req: Request, res: Response) => {
-    const { userId } = req.params
+    const { Id } = req.params
+    console.log(Id)
     try {
 
-      let userFound = await this.userservice.getUser(userId)
+      let userFound = await this.userservice.getUser(Id)
 
       if( userFound == null){
         return res.status(400).json({
           success:false,
-          msg:"No entry was found please provide a valid workoutTypeId !!"
+          msg:"No entry was found please provide a valid userId!!"
         })
 
       }
@@ -106,10 +107,10 @@ export default class userController {
 
   public deleteUserController = async (req: Request, res: Response) => {
 
-    const { userId } = req.params
+    const { Id } = req.params
     try {
 
-      let userDeleteResults = await this.userservice.deleteUserRepository(userId)
+      let userDeleteResults = await this.userservice.deleteUserRepository(Id)
 
 
     

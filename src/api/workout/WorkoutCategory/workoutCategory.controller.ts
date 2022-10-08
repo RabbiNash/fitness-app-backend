@@ -34,10 +34,10 @@ export default class workoutCategoryController {
 
   //get workoutCategory by id
   public getworkoutCategoryController = async (req: Request, res: Response) => {
-    const { workoutCategoryId } = req.params
+    const { Id } = req.params
     try {
 
-      let workoutCategoryFound = await this.workoutCategoryService.getworkoutCategoryRepository(workoutCategoryId)
+      let workoutCategoryFound = await this.workoutCategoryService.getworkoutCategoryRepository(Id)
       if( workoutCategoryFound == null){
         return res.status(400).json({
           success:false,
@@ -107,10 +107,10 @@ export default class workoutCategoryController {
 
   public deleteworkoutCategoryController = async (req: Request, res: Response) => {
 
-    const { workoutCategoryId } = req.params
+    const { Id } = req.params
     try {
 
-      let workoutCategoryDeleteResults = await this.workoutCategoryService.deleteworkoutCategoryRepository(workoutCategoryId)
+      let workoutCategoryDeleteResults = await this.workoutCategoryService.deleteworkoutCategoryRepository(Id)
 
 
     

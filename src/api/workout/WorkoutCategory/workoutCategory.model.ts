@@ -1,6 +1,7 @@
 import { DataTypes ,Sequelize } from "sequelize";
 import postgresDdClient from "../../../config/pgDb.config";
-import { v4 as uuidv4 } from 'uuid';
+
+
 
 
 const WorkoutCategory = postgresDdClient.define("workout_category", {
@@ -17,5 +18,13 @@ const WorkoutCategory = postgresDdClient.define("workout_category", {
  
   
 });
+
+/***
+ * associations with other tables
+ *1. A workout category has many types
+ * 
+ * 
+ */
+// WorkoutCategory.hasMany(WorkoutType)
 
 export default WorkoutCategory;

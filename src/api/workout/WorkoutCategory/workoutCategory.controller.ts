@@ -38,6 +38,13 @@ export default class workoutCategoryController {
     try {
 
       let workoutCategoryFound = await this.workoutCategoryService.getworkoutCategoryRepository(workoutCategoryId)
+      if( workoutCategoryFound == null){
+        return res.status(400).json({
+          success:false,
+          msg:"No entry was found please provide a valid workoutTypeId !!"
+        })
+
+      }
       
 
       return res.json({

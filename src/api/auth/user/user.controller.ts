@@ -36,6 +36,14 @@ export default class userController {
     try {
 
       let userFound = await this.userservice.getUser(userId)
+
+      if( userFound == null){
+        return res.status(400).json({
+          success:false,
+          msg:"No entry was found please provide a valid workoutTypeId !!"
+        })
+
+      }
       
 
       return res.json({

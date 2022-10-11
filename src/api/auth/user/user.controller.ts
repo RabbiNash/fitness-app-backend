@@ -35,7 +35,8 @@ export default class userController {
   //get user by id
   public getUserController = async (req: Request, res: Response) => {
     const { Id } = req.params
-    console.log(Id)
+    
+    // console.log(Id)
     try {
 
       let userFound = await this.userservice.getUser(Id)

@@ -7,14 +7,18 @@ import { v4 as uuidv4 } from "uuid";
 export default class Userservice {
  
 
-  public addUser = async (userOptions: UserClass) :Promise<Boolean> => {
+  public addUser = async (userOptions: UserClass) :Promise<any> => {
     let user = await UserModel.create({
       ...userOptions,
       Id:uuidv4()
 
     });
 
-    return true;
+    return user;
+
+    
+
+    
   };
 
   public getUser = async (Id :string):Promise<any> =>{

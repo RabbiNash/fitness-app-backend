@@ -6,6 +6,11 @@ import userController from "../../src/api/auth/user/user.controller";
 import app from "../../src/appTest";
 import Userservice from "../../src/api/auth/user/user.service";
 
+/**
+ * command to run the test for this file 
+ * npm t --userTest/user.test.ts
+ */
+
 describe("test create  user route ", () => {
   var promise = Promise.resolve(false);
 
@@ -34,6 +39,6 @@ describe("test create  user route ", () => {
   test("AddUser Service to have default return value of true ", async () => {
     
     
-    expect(await  new Userservice().addUser(user)).toBe(false)
+    expect(await  new Userservice().addUser(user)).toBe(true)
   });
 });

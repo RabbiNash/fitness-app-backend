@@ -20,7 +20,8 @@ export default class userController {
 
       return res.json({
         success: true,
-        
+        user:userResult
+
       });
     } catch (error) {
       return res.status(500).json({

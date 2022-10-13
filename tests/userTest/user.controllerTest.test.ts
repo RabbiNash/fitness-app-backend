@@ -28,6 +28,12 @@ describe("User Controller Test" , ()  =>{
         }
     })
 
+    jest.spyOn(User , "update").mockImplementation(async ():Promise<any> =>{
+        return Promise.resolve({
+            success:true,
+            msg:"user was successfully updated "
+        })
+    })
 
     
 
@@ -63,6 +69,33 @@ describe("User Controller Test" , ()  =>{
         expect(success).toBe(false)
 
     })
+
+    /**test case 4 UpDate user */
+
+    test("update user given userId" , async () => {
+        // const updateUserBYPk = await request(appTest).patch("/api/v1/auth/user/f93389d3-be30-4226-8b47-1c3796927bfb")
+        let updateOptions = {
+            Id:'f93389d3-be30-4226-8b47-1c3796927bfb',
+            displayName:"newName",
+            email:"newemail@gmail.com",
+            photoURL:"newPhotoUrl"
+        }
+
+        const userUpdate = await User.update({
+            ...updateOptions
+    
+          } , {
+            where:{
+              Id :updateOptions.Id
+            }
+          })
+          
+          expect(userUpdate).toHaveProperty("success")
+    
+
+        
+    })
+
 
 })
 

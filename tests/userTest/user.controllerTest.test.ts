@@ -43,6 +43,8 @@ describe("User Controller Test" , ()  =>{
             ...userInstance
         })
 
+        expect(userModelMock).toHaveBeenCalledTimes(1)
+
         expect(userCreationRes.body).toHaveProperty("user")
         
     })
@@ -73,7 +75,7 @@ describe("User Controller Test" , ()  =>{
     /**test case 4 UpDate user */
 
     test("update user given userId" , async () => {
-        // const updateUserBYPk = await request(appTest).patch("/api/v1/auth/user/f93389d3-be30-4226-8b47-1c3796927bfb")
+         const updateUserBYPk = await request(appTest).patch("/api/v1/auth/user/f93389d3-be30-4226-8b47-1c3796927bfb")
         let updateOptions = {
             Id:'f93389d3-be30-4226-8b47-1c3796927bfb',
             displayName:"newName",

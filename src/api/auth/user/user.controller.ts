@@ -88,6 +88,9 @@ export default class userController {
 
       let userUpdateResults = await this.userservice.upDateUserRepository({...req.body})
 
+
+      console.log(userUpdateResults)
+
       if( userUpdateResults[0] !== 1 ){
         return res.status(400).json({
           success:false,

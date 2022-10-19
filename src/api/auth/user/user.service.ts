@@ -15,10 +15,6 @@ export default class Userservice {
     });
 
     return user;
-
-    
-
-    
   };
 
   public getUser = async (Id :string):Promise<any> =>{

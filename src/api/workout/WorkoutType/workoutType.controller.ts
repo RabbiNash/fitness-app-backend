@@ -12,6 +12,7 @@ export default class workoutTypeController {
   }
 
   public addworkoutTypeController = async (req: Request, res: Response) => {
+    
     const { workoutTypeName , workoutTypeNotes,workoutCategoryId } = req.body;
     let newworkoutType = new workoutTypeClass(workoutTypeName , workoutTypeNotes , workoutCategoryId);
     

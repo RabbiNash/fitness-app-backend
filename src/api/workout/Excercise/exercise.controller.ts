@@ -1,25 +1,19 @@
 import { Request, Response } from "express";
 
 import { ExerciseClass } from "./exercise.class";
-import exerciseservice from "./exercise.service";
+import * as exerciseService from "./exercise.service"
+
 
 export default class exerciseController {
   
-  private exerciseService: exerciseservice;
-
-  constructor(){
-    this.exerciseService = new exerciseservice()
-  }
+ 
 
   public addexerciseController = async (req: Request, res: Response) => {
     const { exerciseName , exerciseNotes,weight,reps ,duration ,distance ,userId,workoutTypeId} = req.body;
     let newexercise = new ExerciseClass(exerciseName , exerciseNotes,weight,reps ,duration,distance,userId,workoutTypeId );
 
-    console.log(newexercise)
-
-  
     try {
-      let exerciseResult = await this.exerciseService.addexerciseRepository(newexercise)
+      let exerciseResult = await exerciseService.addexerciseRepository(newexercise)
 
       return res.json({
         success: true,
@@ -40,7 +34,7 @@ export default class exerciseController {
     const { Id } = req.params
     try {
 
-      let exerciseFound = await this.exerciseService.getexerciseRepository(Id)
+      let exerciseFound = await exerciseService.getexerciseRepository(Id)
 
       if( exerciseFound == null){
         return res.status(400).json({
@@ -69,7 +63,7 @@ export default class exerciseController {
     
     try {
 
-      let exercisesFound = await this.exerciseService.getAllworkoutCategoriesRepository()
+      let exercisesFound = await exerciseService.getAllworkoutCategoriesRepository()
       
 
       return res.json({
@@ -87,7 +81,7 @@ export default class exerciseController {
 
     try {
 
-      let exerciseUpdateResults = await this.exerciseService.upDateexerciseRepository({...req.body})
+      let exerciseUpdateResults = await exerciseService.upDateexerciseRepository({...req.body})
 
       if( exerciseUpdateResults[0] !== 1 ){
         return res.status(400).json({
@@ -114,7 +108,7 @@ export default class exerciseController {
     const { Id } = req.params
     try {
 
-      let exerciseDeleteResults = await this.exerciseService.deleteexerciseRepository(Id)
+      let exerciseDeleteResults = await exerciseService.deleteexerciseRepository(Id)
 
 
     

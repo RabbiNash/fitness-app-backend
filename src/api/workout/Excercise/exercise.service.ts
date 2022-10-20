@@ -4,10 +4,10 @@ import { ExerciseClass } from "./exercise.class";
 import { v4 as uuidv4 } from "uuid";
 
 
-export default class exerciseservice {
+
  
 
-  public addexerciseRepository = async (exerciseOptions: ExerciseClass) :Promise<any> => {
+  export const addexerciseRepository = async (exerciseOptions: ExerciseClass) :Promise<any> => {
     let exercise = await ExerciseModel.create({
       ...exerciseOptions,
       
@@ -18,7 +18,7 @@ export default class exerciseservice {
     return exercise
   };
 
-  public getexerciseRepository = async (Id :string):Promise<any> =>{
+  export const getexerciseRepository = async (Id :string):Promise<any> =>{
 
     try {
       let exerciseFound  = await ExerciseModel.findByPk(Id)
@@ -33,7 +33,7 @@ export default class exerciseservice {
     }
   }
 
-  public getAllworkoutCategoriesRepository = async ():Promise<any> =>{
+  export const getAllworkoutCategoriesRepository = async ():Promise<any> =>{
 
     try {
       let workoutCategoriessFound  = await ExerciseModel.findAll()
@@ -49,7 +49,7 @@ export default class exerciseservice {
 
   }
 
-  public upDateexerciseRepository = async (updateOptions: { [x: string]: any; }):Promise<any> =>{
+  export const  upDateexerciseRepository = async (updateOptions: { [x: string]: any; }):Promise<any> =>{
 
     try {
       //return the number of destroyed rows
@@ -73,7 +73,7 @@ export default class exerciseservice {
 
   }
 
-  public deleteexerciseRepository = async (Id:string):Promise<any> =>{
+  export const deleteexerciseRepository = async (Id:string):Promise<any> =>{
     try {
       //return the number of destroyed rows
       let deletedexercise  = await ExerciseModel.destroy({where:{
@@ -89,4 +89,6 @@ export default class exerciseservice {
     }
 
   }
-}
+
+  
+

@@ -131,6 +131,8 @@ export const deleteexerciseController = async (req: Request, res: Response) => {
       Id
     );
 
+    console.log(exerciseDeleteResults)
+
     if (exerciseDeleteResults !== 1) {
       return res.status(400).json({
         success: false,
@@ -140,7 +142,7 @@ export const deleteexerciseController = async (req: Request, res: Response) => {
 
     return res.json({
       success: true,
-      msg: "Entry  was successfully deleted  ",
+      msg: "Entry  was successfully deleted",
     });
   } catch (error) {
     return res.status(500).json({

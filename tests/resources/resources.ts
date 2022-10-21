@@ -34,6 +34,20 @@ let exerciseInput = new ExerciseClass(
   "cf5631e5-d5dc-4f52-9a07-de6a63fbebdc",
   "6c37b303-ac2f-475a-9b14-f7308ccf77a8"
 );
+
+ const exerciseInstance =  {
+  "Id": "e941f7d1-c65c-4995-a53f-40a0f56c4a6a",
+  "exerciseName": "blackmhofu",
+  "weight": 67,
+  "reps": 4,
+  "duration": 5,
+  "distance": 5,
+  "exerciseNotes": "Here are some notes about this workout type..",
+  "createdAt": "2022-10-20T14:18:55.290Z",
+  "updatedAt": "2022-10-20T14:18:55.290Z",
+  "userId": "9bf78f57-91bd-45a9-87ab-2b822bdb3395",
+  "workoutTypeId": "d204ec21-9217-4eeb-bbbe-9db39b46d505"
+}
 const exercisePayload = {
   success: true,
   msg: "exercise was successfully created !! ",
@@ -56,6 +70,7 @@ export {
      app, 
      userPayLoad,
       userInput, 
+      exerciseInstance,
       User, 
       request, 
       exerciseInput,

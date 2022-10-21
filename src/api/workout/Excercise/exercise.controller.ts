@@ -105,6 +105,8 @@ export const upDateexerciseController = async (req: Request, res: Response) => {
       ...req.body,
     });
 
+    console.log(exerciseUpdateResults + "from controller")
+
     if (exerciseUpdateResults[0] !== 1) {
       return res.status(400).json({
         success: false,
@@ -131,7 +133,7 @@ export const deleteexerciseController = async (req: Request, res: Response) => {
       Id
     );
 
-    console.log(exerciseDeleteResults)
+    
 
     if (exerciseDeleteResults !== 1) {
       return res.status(400).json({

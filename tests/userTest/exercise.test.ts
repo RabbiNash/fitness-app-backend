@@ -1,7 +1,7 @@
 /** This file contains the tests onthe creattion of a workout */
 
 import * as exerciseservice from "../../src/api/workout/Excercise/exercise.service";
-import { app, exerciseInput, request } from "../resources/resources";
+import { app, exerciseInput, exerciseInstance, request } from "../resources/resources";
 
 describe("Exersise controllers  Tests", () => {
   describe("given all the properties the controller should return  success, message ,and exercise object", () => {
@@ -10,7 +10,7 @@ describe("Exersise controllers  Tests", () => {
       .spyOn(exerciseservice, "addexerciseRepository")
       .mockResolvedValueOnce(exerciseInput);
 
-    test("should have success , msg,exercise  fields in body", async () => {
+    test("should have success:true , msg,exercise  fields in body", async () => {
       let exerciseCreationRes = await request(app)
         .post("/api/v1/workout/exercise")
         .send({
@@ -30,7 +30,7 @@ describe("Exersise controllers  Tests", () => {
       .spyOn(exerciseservice, "addexerciseRepository")
       .mockResolvedValueOnce(exerciseInput);
 
-    test("should have success , msg,exercise  fields in body", async () => {
+    test("should have success :false , msg,exercise  fields in body", async () => {
       let exerciseCreationRes = await request(app)
         .post("/api/v1/workout/exercise")
         .send({
@@ -112,9 +112,9 @@ describe("Exersise controllers  Tests", () => {
         .mockResolvedValueOnce(1);
       // return  value of  1 means deleted
 
-      test("should have success , msg,exercise  fields in body", async () => {
+      test("should have success :true , msg,exercise  fields in body", async () => {
         let exerciseDeletionRes = await request(app).delete(
-          "/api/v1/workout/exercise/e941f7d1-c65c-4995-a53f-40a0f56c4a6a"
+          "/api/v1/workout/exercise/6112d1b8-2ded-4b5f-8923-70144852d18a"
         );
 
         const { success, msg } = await exerciseDeletionRes.body;
@@ -130,9 +130,9 @@ describe("Exersise controllers  Tests", () => {
         .mockResolvedValueOnce(0);
       // return  value of  0 means no deleted
 
-      test("should have success , msg,exercise  fields in body", async () => {
+      test("should have success :false , msg,exercise  fields in body", async () => {
         let exerciseDeletionRes = await request(app).delete(
-          "/api/v1/workout/exercise/e941f7d1-c65c-4995-a53f-40a0f56c4a6a"
+          "/api/v1/workout/exercise/6112d1b8-2ded-4b5f-8923-70144852d18a"
         );
 
         const { success, msg } = await exerciseDeletionRes.body;
@@ -141,4 +141,52 @@ describe("Exersise controllers  Tests", () => {
       });
     });
   });
+
+  /**
+   * Test case 4  :Updating the exercise
+   */
+
+   describe("Upadating  Exercises !!!! ", () => {
+    describe("given valid exerciseId", () => {
+      //@ts-ignore
+      let exerciseServiceMock = jest
+        .spyOn(exerciseservice, "upDateexerciseRepository")
+        .mockResolvedValueOnce([0]);
+      // return  value of  1 means updating
+
+      test("should have success , msg  fields in body", async () => {
+        let exerciseUpadateRes = await request(app).patch(
+          "/api/v1/workout/exercise").send({
+            ...exerciseInstance
+          });
+        const { success, msg } = await exerciseUpadateRes.body;
+
+        expect(exerciseUpadateRes.body).toHaveProperty("success")
+        expect(exerciseUpadateRes.body).toHaveProperty("msg")
+        
+      });
+    });
+
+    describe("given Invalid exerciseId", () => {
+
+     //@ts-ignore
+     let exerciseServiceMock = jest
+     .spyOn(exerciseservice, "upDateexerciseRepository")
+     .mockResolvedValueOnce([0]);
+
+      test("should have success :false , msg,exercise  fields in body", async () => {
+        let exerciseDeletionRes = await request(app).patch(
+          "/api/v1/workout/exercise/"
+        );
+
+        const { success, msg } = await exerciseDeletionRes.body;
+        expect(success).toBe(false)
+        expect(msg).toBe("No entry was updated please provide a valid exerciseId !!");
+      });
+    });
+  });
+
+
+
+
 });

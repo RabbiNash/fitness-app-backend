@@ -1,14 +1,14 @@
 import {Router} from "express"
-import exerciseController from "./exercise.controller"
+import * as exerciseController from "./exercise.controller"
 
 const exerciseRouter  = Router()
 
 
-exerciseRouter.post("/",new exerciseController().addexerciseController)
-exerciseRouter.get("/:Id", new exerciseController().getexerciseController)
-exerciseRouter.get("/" , new exerciseController().getAllexerciseController)
-exerciseRouter.patch("/" , new exerciseController().upDateexerciseController)
-exerciseRouter.delete("/:Id" , new exerciseController().deleteexerciseController)
+exerciseRouter.post("/",exerciseController.addexerciseController)
+exerciseRouter.get("/:Id", exerciseController.getexerciseController)
+exerciseRouter.get("/" , exerciseController.getAllexerciseController)
+exerciseRouter.patch("/" ,  exerciseController.upDateexerciseController)
+exerciseRouter.delete("/:Id" ,  exerciseController.deleteexerciseController)
 
 
 

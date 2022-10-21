@@ -1,8 +1,5 @@
-export class MissingArguments{
+export  const CheckMissingParams =   (requiredPars: string[], passedPars: any) : Promise<string[]> | [] => {
 
-    public static missingArguments(requiredArguments:string[] , passedArguments:any) :string[]{
 
-        return requiredArguments.filter((par: any) => passedArguments[par] === null || passedArguments[par] === undefined);
-
-    }
+    return  Promise .resolve(requiredPars.filter((par: any) => passedPars[par] === null || passedPars[par] === undefined));
 }

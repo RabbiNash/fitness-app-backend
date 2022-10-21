@@ -3,7 +3,7 @@ import { UserClass } from "../../src/api/auth/user/user.class";
 import User from "../../src/api/auth/user/user.model";
 import { ExerciseClass } from "../../src/api/workout/Excercise/exercise.class";
 import app from "../../src/appTest";
-import exerciseController from "../../src/api/workout/Excercise/exercise.controller";
+import * as exerciseController from "../../src/api/workout/Excercise/exercise.controller";
 
 /**
  * command to run the test for this file

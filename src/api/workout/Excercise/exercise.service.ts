@@ -3,10 +3,6 @@ import ExerciseModel from "./exercise.model"
 import { ExerciseClass } from "./exercise.class";
 import { v4 as uuidv4 } from "uuid";
 
-
-
- 
-
   export const addexerciseRepository = async (exerciseOptions: ExerciseClass) :Promise<any> => {
     let exercise = await ExerciseModel.create({
       ...exerciseOptions,

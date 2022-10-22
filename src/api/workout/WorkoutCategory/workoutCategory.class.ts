@@ -1,13 +1,12 @@
 /**this file contains the user interface  */
 
 
-export class workoutCategoryClass  {
-  private workoutCategoryName:string
+export class workoutCategoryClass {
+    private workoutCategoryName: string
 
-  constructor(workoutCategoryName:string){
-    this.workoutCategoryName = workoutCategoryName
-  }
-
+    constructor(workoutCategoryName: string) {
+        this.workoutCategoryName = workoutCategoryName
+    }
 
 
 }

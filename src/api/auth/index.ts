@@ -3,6 +3,6 @@ import {Router} from "express"
 import userRoutes from "../auth/user/routes"
 
 const router = Router()
-router.use("/user",userRoutes)
+router.use("/user", userRoutes)
 
-export default  router
+export default router

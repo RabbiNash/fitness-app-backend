@@ -24,7 +24,7 @@ describe("Exersise controllers  Tests", () => {
     });
   });
 
-  describe("given missing properties the controller should return  success, message ,and missingParams", () => {
+  describe("given missing properties when the controller is called then it  should return  success:false, message ,and missingParams", () => {
     //@ts-ignore
     let exerciseServiceMock = jest
       .spyOn(exerciseservice, "addexerciseRepository")

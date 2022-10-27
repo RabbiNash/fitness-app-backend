@@ -58,6 +58,7 @@ Exercise.belongsTo(User)
 *       type: object
 *       required:
 *         - workoutTypeName
+*         - workoutCategoryId
 *       properties:
 *         workoutTypeName:
 *           type: string

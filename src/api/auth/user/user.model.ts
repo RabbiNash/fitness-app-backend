@@ -39,9 +39,7 @@ const User = postgresDdClient.define("user", {
  *       type: object
  *       required:
  *         - email
- *         - displayName
  *         - password
- *         - photoURL
  *       properties:
  *         email:
  *           type: string

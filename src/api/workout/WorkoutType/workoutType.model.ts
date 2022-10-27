@@ -90,7 +90,7 @@ Exercise.belongsTo(User)
 *         workoutTypeName:
 *           type: string
 *         workoutCategoryId:
-*           type: 6effe544-4c66-434a-b752-89603c57f47
+*           type: string
 *         Id:
 *           type: string
 *         createdAt:

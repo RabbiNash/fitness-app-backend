@@ -27,5 +27,9 @@ const Exercise = postgresDdClient.define("exercise", {
     type: DataTypes.STRING,
   },
 });
+/**
+ * Documentation for swagger api documentation
+ */
+
 
 export default Exercise;

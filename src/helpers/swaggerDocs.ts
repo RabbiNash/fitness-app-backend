@@ -18,7 +18,8 @@ const options :swaggerJsDoc.Options = {
         "./src/*/*.ts" ,
          "./src/api/auth/user/*.ts" ,
          "./src/api/workout/WorkoutCategory/*.ts",
-         "./src/api/workout/WorkoutType/*.ts"
+         "./src/api/workout/WorkoutType/*.ts",
+         "./src/api/workout/Excercise/*.ts"
         ]
     
 }

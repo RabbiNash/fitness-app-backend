@@ -9,12 +9,16 @@ const options :swaggerJsDoc.Options = {
     definition:{
         openapi :'3.0.0',
         info:{
-            title:"Rest API documentation",
+            title:"Fitness_APP  API documentation",
             version:"1.0"
         },
     },
     //an array of paths where your APIs are defined
-    apis:["./src/routes.ts", "./src/models/*.ts" ,]
+    apis:[
+        "./src/*/*.ts" ,
+         "./src/api/auth/user/*.ts" ,
+         "./src/api/workout/Exercise/*.ts"
+        ]
     
 }
 

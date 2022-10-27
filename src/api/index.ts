@@ -9,6 +9,18 @@ router.use("/workout",workoutsRoutes)
 
 
 
+  /**
+   * @openapi
+   * /api/v1/:
+   *   get:
+   *     tags:
+   *       - server-health
+   *     description: Respose when the app is up mand running
+   *     responses:
+   *       200:
+   *         description: The app is up and running.
+   */
+
 router.get("/", (req, res)=>{
     return res.json({
         message:"fitness app is up and running"

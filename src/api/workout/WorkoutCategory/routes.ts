@@ -102,13 +102,13 @@ workoutCategoryRouter.patch("/" , new workoutCategoryController().upDateworkoutC
 
   /**
    * @openapi
-   * '/api/v1/workout/category/{workoutCategoryId}':
+   * '/api/v1/workout/category/{Id}':
    *  delete:
    *    tags:
    *      - workoutCategory
    *    summary: Delete workoutCategory by Id
    *    parameters:
-   *      - name: workoutCategoryId
+   *      - name: Id
    *        in: path
    *        description: workoutCategory Id
    *        required: true

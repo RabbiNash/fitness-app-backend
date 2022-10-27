@@ -33,13 +33,13 @@ userRouter.post("/",new userController().addUserController)
 
   /**
    * @openapi
-   * '/api/v1/auth/user/{userId}':
+   * '/api/v1/auth/user/{Id}':
    *  get:
    *    tags:
    *      - User
    *    summary: Get user by id
    *    parameters:
-   *      - name: productId
+   *      - name: Id
    *        in: path
    *        description: The id of the product
    *        required: true
@@ -102,13 +102,13 @@ userRouter.patch("/" , new userController().upDateUserController)
 
   /**
    * @openapi
-   * '/api/v1/auth/user/{userId}':
+   * '/api/v1/auth/user/{Id}':
    *  delete:
    *    tags:
    *      - User
    *    summary: Delete user by id
    *    parameters:
-   *      - name: productId
+   *      - name: Id
    *        in: path
    *        description: user Id
    *        required: true

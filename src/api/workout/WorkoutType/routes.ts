@@ -104,13 +104,13 @@ workoutTypeRouter.patch("/" , new workoutTypeController().upDateworkoutTypeContr
 
   /**
    * @openapi
-   * '/api/v1/workout/type/{workoutTypeId}':
+   * '/api/v1/workout/type/{Id}':
    *  delete:
    *    tags:
    *      - workoutType
    *    summary: Delete workoutType by Id
    *    parameters:
-   *      - name: workoutTypeId
+   *      - name: Id
    *        in: path
    *        description: workoutType Id
    *        required: true

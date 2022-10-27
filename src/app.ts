@@ -5,6 +5,7 @@ import apiV1 from "../src/api/index";
 import postgresDdClient from "./config/pgDb.config";
 
 
+
 class App {
   public express: express.Application;
 

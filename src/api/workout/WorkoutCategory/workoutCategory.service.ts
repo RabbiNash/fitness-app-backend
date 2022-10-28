@@ -1,6 +1,5 @@
 // import { IdGenerator } from "../../../helpers/helper.IDgenerator.js";
-//@ts-ignore
-import workoutCategoryModel from "../workoutCategory/workoutCategory.model.ts";
+import workoutCategoryModel from "../WorkoutCategory/workoutCategory.model";
 import {workoutCategoryClass} from "./workoutCategory.class";
 import {v4 as uuidv4} from "uuid";
 

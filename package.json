@@ -4,6 +4,7 @@
   "description": "This is the backend of fitness app",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "start": "ts-node  src/index.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
     "test": "jest"

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { workoutCategoryClass } from "./workoutCategory.class";
+import { workoutCategoryClass } from "./workoutCategoryclass";
 import workoutCategoryservice from "./workoutCategory.service";
 
 export default class workoutCategoryController {

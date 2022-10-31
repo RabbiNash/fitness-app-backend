@@ -1,6 +1,6 @@
 import User from "../api/auth/user/user.model"
 import Exercise from "../api/workout/Excercise/exercise.model"
-import WorkoutCategory from "../api/workout/workoutCategory/workoutCategory.model"
+import WorkoutCategory from "../api/workout/WorkoutCategory/workoutCategorymodel"
 import { WorkoutType } from "../api/workout/workoutType/workoutType.model"
 
 /**defining all the relationships in one files coz they are not recognised by the tests

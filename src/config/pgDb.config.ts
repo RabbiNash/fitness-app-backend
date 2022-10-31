@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-let postgresDdClient = new Sequelize("fitness_db", "postgres", "1311", {
+let postgresDdClient = new Sequelize("fitness_db", process.env.DB_USER!, process.env.DB_PASSWORD, {
   host: "localhost",
   dialect: "postgres",
   logging: false,

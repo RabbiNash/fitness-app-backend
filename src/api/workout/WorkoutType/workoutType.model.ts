@@ -6,7 +6,7 @@ import Exercise from "../Excercise/exercise.model";
 import User from "../../auth/user/user.model";
 
 
-const WorkoutType = postgresDdClient.define("workout_type", {
+export const WorkoutType = postgresDdClient.define("workout_type", {
   Id: {
     type: DataTypes.STRING,
     primaryKey: true,
@@ -104,4 +104,3 @@ Exercise.belongsTo(User)
 
 
 
-export default WorkoutType;

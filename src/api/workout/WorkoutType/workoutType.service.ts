@@ -1,5 +1,5 @@
 // import { IdGenerator } from "../../../helpers/helper.IDgenerator.js";
-import workoutTypeModel from "../workoutType/workoutType.model";
+import {WorkoutType} from "../workoutType/workoutType.model";
 import { workoutTypeClass } from "./workoutType.class";
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,7 +8,7 @@ export default class workoutTypeservice {
  
 
   public addworkoutTypeRepository = async (workoutTypeOptions: workoutTypeClass) :Promise<any> => {
-    let workoutType = await workoutTypeModel.create({
+    let workoutType = await WorkoutType.create({
       ...workoutTypeOptions,
       Id:uuidv4()
 
@@ -20,7 +20,7 @@ export default class workoutTypeservice {
   public getworkoutTypeRepository = async (Id :string):Promise<any> =>{
 
     try {
-      let workoutTypeFound  = await workoutTypeModel.findByPk(Id)
+      let workoutTypeFound  = await WorkoutType.findByPk(Id)
 
      
     
@@ -35,7 +35,7 @@ export default class workoutTypeservice {
   public getAllworkoutCategoriesRepository = async ():Promise<any> =>{
 
     try {
-      let workoutCategoriessFound  = await workoutTypeModel.findAll()
+      let workoutCategoriessFound  = await WorkoutType.findAll()
     
       return workoutCategoriessFound
 
@@ -52,7 +52,7 @@ export default class workoutTypeservice {
 
     try {
       //return the number of destroyed rows
-      let workoutTypesFound  = await workoutTypeModel.update({
+      let workoutTypesFound  = await WorkoutType.update({
         ...updateOptions
 
       } , {
@@ -75,7 +75,7 @@ export default class workoutTypeservice {
   public deleteworkoutTypeRepository = async (Id:string):Promise<any> =>{
     try {
       //return the number of destroyed rows
-      let deletedworkoutType  = await workoutTypeModel.destroy({where:{
+      let deletedworkoutType  = await WorkoutType.destroy({where:{
         Id:Id
       }})
 

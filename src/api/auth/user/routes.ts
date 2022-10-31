@@ -1,5 +1,5 @@
 import { Router } from "express";
-import userController from "./user.controller";
+import * as UserController from "./user.controller";
 
 const userRouter = Router();
 
@@ -28,7 +28,7 @@ const userRouter = Router();
  *       400:
  *         description: Bad request
  */
-userRouter.post("/", new userController().addUserController);
+userRouter.post("/", UserController.addUserController);
 
 /**
  * @openapi
@@ -54,7 +54,7 @@ userRouter.post("/", new userController().addUserController);
  *
  *
  */
-userRouter.get("/:Id", new userController().getUserController);
+userRouter.get("/:Id", UserController.getUserController);
 
 /**
  * @openapi
@@ -75,7 +75,7 @@ userRouter.get("/:Id", new userController().getUserController);
  *
  *
  */
-userRouter.get("/", new userController().getAllUserController);
+userRouter.get("/", UserController.getAllUserController);
 /**
  * @openapi
  * '/api/v1/auth/user':
@@ -97,7 +97,7 @@ userRouter.get("/", new userController().getAllUserController);
  *       500:
  *         description: Server Error
  */
-userRouter.patch("/", new userController().upDateUserController);
+userRouter.patch("/", UserController.upDateUserController);
 
 /**
  * @openapi
@@ -121,6 +121,6 @@ userRouter.patch("/", new userController().upDateUserController);
  *
  *
  */
-userRouter.delete("/:Id", new userController().deleteUserController);
+userRouter.delete("/:Id", UserController.deleteUserController);
 
 export default userRouter;

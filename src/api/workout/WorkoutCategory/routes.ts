@@ -1,5 +1,5 @@
 import { Router } from "express";
-import workoutCategoryController from "./workoutCategory.controller";
+import * as workoutCategoryController from "./workoutCategory.controller";
 
 const workoutCategoryRouter = Router();
 
@@ -30,7 +30,7 @@ const workoutCategoryRouter = Router();
  */
 workoutCategoryRouter.post(
   "/",
-  new workoutCategoryController().addworkoutCategoryController
+  workoutCategoryController.addworkoutCategoryController
 );
 /**
  * @openapi
@@ -60,7 +60,7 @@ workoutCategoryRouter.post(
  */
 workoutCategoryRouter.get(
   "/:Id",
-  new workoutCategoryController().getworkoutCategoryController
+  workoutCategoryController.getworkoutCategoryController
 );
 /**
  * @openapi
@@ -83,7 +83,7 @@ workoutCategoryRouter.get(
  */
 workoutCategoryRouter.get(
   "/",
-  new workoutCategoryController().getAllworkoutCategoryController
+  workoutCategoryController.getAllworkoutCategoryController
 );
 /**
  * @openapi
@@ -108,7 +108,7 @@ workoutCategoryRouter.get(
  */
 workoutCategoryRouter.patch(
   "/",
-  new workoutCategoryController().upDateworkoutCategoryController
+  workoutCategoryController.upDateworkoutCategoryController
 );
 
 /**
@@ -135,7 +135,7 @@ workoutCategoryRouter.patch(
  */
 workoutCategoryRouter.delete(
   "/:Id",
-  new workoutCategoryController().deleteworkoutCategoryController
+  workoutCategoryController.deleteworkoutCategoryController
 );
 
 export default workoutCategoryRouter;

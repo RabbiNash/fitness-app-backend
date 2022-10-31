@@ -1,136 +1,134 @@
 import { Request, Response } from "express";
 
 import { workoutCategoryClass } from "./workoutCategoryclass";
-import workoutCategoryservice from "./workoutCategory.service";
+import * as workoutCategoryservice from "./workoutCategory.service";
 
-export default class workoutCategoryController {
-  private workoutCategoryService: workoutCategoryservice;
+export const addworkoutCategoryController = async (
+  req: Request,
+  res: Response
+) => {
+  const { workoutCategoryName } = req.body;
+  let newworkoutCategory = new workoutCategoryClass(workoutCategoryName);
 
-  constructor() {
-    this.workoutCategoryService = new workoutCategoryservice();
+  try {
+    let workoutCategoryResult =
+      await workoutCategoryservice.addworkoutCategoryRepository(
+        newworkoutCategory
+      );
+
+    return res.json({
+      success: true,
+      msg: "workoutCategory was successfully created !! ",
+      workoutCategory: workoutCategoryResult,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: `${error}`,
+    });
   }
+};
 
-  public addworkoutCategoryController = async (req: Request, res: Response) => {
-    const { workoutCategoryName } = req.body;
-    let newworkoutCategory = new workoutCategoryClass(workoutCategoryName);
-
-    try {
-      let workoutCategoryResult =
-        await this.workoutCategoryService.addworkoutCategoryRepository(
-          newworkoutCategory
-        );
-
-      return res.json({
-        success: true,
-        msg: "workoutCategory was successfully created !! ",
-        workoutCategory: workoutCategoryResult,
-      });
-    } catch (error) {
-      return res.status(500).json({
+//get workoutCategory by id
+export const getworkoutCategoryController = async (
+  req: Request,
+  res: Response
+) => {
+  const { Id } = req.params;
+  try {
+    let workoutCategoryFound =
+      await workoutCategoryservice.getworkoutCategoryRepository(Id);
+    if (workoutCategoryFound == null) {
+      return res.status(400).json({
         success: false,
-        msg: `${error}`,
+        msg: "No entry was found please provide a valid workoutTypeId !!",
       });
     }
-  };
 
-  //get workoutCategory by id
-  public getworkoutCategoryController = async (req: Request, res: Response) => {
-    const { Id } = req.params;
-    try {
-      let workoutCategoryFound =
-        await this.workoutCategoryService.getworkoutCategoryRepository(Id);
-      if (workoutCategoryFound == null) {
-        return res.status(400).json({
-          success: false,
-          msg: "No entry was found please provide a valid workoutTypeId !!",
-        });
-      }
+    return res.json({
+      success: true,
+      workoutCategory: workoutCategoryFound,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: `${error}`,
+    });
+  }
+};
 
-      return res.json({
-        success: true,
-        workoutCategory: workoutCategoryFound,
+export const getAllworkoutCategoryController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    let workoutCategorysFound =
+      await workoutCategoryservice.getAllworkoutCategoriesRepository();
+
+    return res.json({
+      success: true,
+      workoutCategories: workoutCategorysFound,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: `${error}`,
+    });
+  }
+};
+export const upDateworkoutCategoryController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    let workoutCategoryUpdateResults =
+      await workoutCategoryservice.upDateworkoutCategoryRepository({
+        ...req.body,
       });
-    } catch (error) {
-      return res.status(500).json({
+
+    if (workoutCategoryUpdateResults[0] !== 1) {
+      return res.status(400).json({
         success: false,
-        msg: `${error}`,
+        msg: "No entry was updated please provide a valid workoutCategoryId !!",
       });
     }
-  };
 
-  public getAllworkoutCategoryController = async (
-    req: Request,
-    res: Response
-  ) => {
-    try {
-      let workoutCategorysFound =
-        await this.workoutCategoryService.getAllworkoutCategoriesRepository();
+    return res.json({
+      success: true,
+      msg: "workoutCategory was successfully updated ",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: `${error}`,
+    });
+  }
+};
 
-      return res.json({
-        success: true,
-        workoutCategories: workoutCategorysFound,
-      });
-    } catch (error) {
-      return res.status(500).json({
+export const deleteworkoutCategoryController = async (
+  req: Request,
+  res: Response
+) => {
+  const { Id } = req.params;
+  try {
+    let workoutCategoryDeleteResults =
+      await workoutCategoryservice.deleteworkoutCategoryRepository(Id);
+
+    if (workoutCategoryDeleteResults !== 1) {
+      return res.status(400).json({
         success: false,
-        msg: `${error}`,
+        msg: "No entry was deleted please provide a valid workoutCategoryId !!",
       });
     }
-  };
-  public upDateworkoutCategoryController = async (
-    req: Request,
-    res: Response
-  ) => {
-    try {
-      let workoutCategoryUpdateResults =
-        await this.workoutCategoryService.upDateworkoutCategoryRepository({
-          ...req.body,
-        });
 
-      if (workoutCategoryUpdateResults[0] !== 1) {
-        return res.status(400).json({
-          success: false,
-          msg: "No entry was updated please provide a valid workoutCategoryId !!",
-        });
-      }
-
-      return res.json({
-        success: true,
-        msg: "workoutCategory was successfully updated ",
-      });
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        msg: `${error}`,
-      });
-    }
-  };
-
-  public deleteworkoutCategoryController = async (
-    req: Request,
-    res: Response
-  ) => {
-    const { Id } = req.params;
-    try {
-      let workoutCategoryDeleteResults =
-        await this.workoutCategoryService.deleteworkoutCategoryRepository(Id);
-
-      if (workoutCategoryDeleteResults !== 1) {
-        return res.status(400).json({
-          success: false,
-          msg: "No entry was deleted please provide a valid workoutCategoryId !!",
-        });
-      }
-
-      return res.json({
-        success: true,
-        msg: "Entry  was successfully deleted  ",
-      });
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        msg: `${error}`,
-      });
-    }
-  };
-}
+    return res.json({
+      success: true,
+      msg: "Entry  was successfully deleted  ",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: `${error}`,
+    });
+  }
+};

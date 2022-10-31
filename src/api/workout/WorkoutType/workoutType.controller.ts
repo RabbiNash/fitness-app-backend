@@ -1,16 +1,10 @@
 import { Request, Response } from "express";
 
 import { workoutTypeClass } from "./workoutType.class";
-import workoutTypeservice from "./workoutType.service";
+import * as WorkoutTypeService from "./workoutType.service";
 
-export default class workoutTypeController {
-  private workoutTypeService: workoutTypeservice;
 
-  constructor() {
-    this.workoutTypeService = new workoutTypeservice();
-  }
-
-  public addworkoutTypeController = async (req: Request, res: Response) => {
+  export const addworkoutTypeController = async (req: Request, res: Response) => {
     const { workoutTypeName, workoutTypeNotes, workoutCategoryId } = req.body;
     let newworkoutType = new workoutTypeClass(
       workoutTypeName,
@@ -20,7 +14,7 @@ export default class workoutTypeController {
 
     try {
       let workoutTypeResult =
-        await this.workoutTypeService.addworkoutTypeRepository(newworkoutType);
+        await WorkoutTypeService.addworkoutTypeRepository(newworkoutType);
 
       return res.json({
         success: true,
@@ -37,11 +31,11 @@ export default class workoutTypeController {
   };
 
   //get workoutType by id
-  public getworkoutTypeController = async (req: Request, res: Response) => {
+  export const  getworkoutTypeController = async (req: Request, res: Response) => {
     const { Id } = req.params;
     try {
       let workoutTypeFound =
-        await this.workoutTypeService.getworkoutTypeRepository(Id);
+        await WorkoutTypeService.getworkoutTypeRepository(Id);
 
       if (workoutTypeFound == null) {
         return res.status(400).json({
@@ -62,10 +56,10 @@ export default class workoutTypeController {
     }
   };
 
-  public getAllworkoutTypeController = async (req: Request, res: Response) => {
+  export const  getAllworkoutTypeController = async (req: Request, res: Response) => {
     try {
       let workoutTypesFound =
-        await this.workoutTypeService.getAllworkoutCategoriesRepository();
+        await WorkoutTypeService.getAllworkoutCategoriesRepository();
 
       return res.json({
         success: true,
@@ -78,10 +72,10 @@ export default class workoutTypeController {
       });
     }
   };
-  public upDateworkoutTypeController = async (req: Request, res: Response) => {
+  export const upDateworkoutTypeController = async (req: Request, res: Response) => {
     try {
       let workoutTypeUpdateResults =
-        await this.workoutTypeService.upDateworkoutTypeRepository({
+        await WorkoutTypeService.upDateworkoutTypeRepository({
           ...req.body,
         });
 
@@ -104,11 +98,11 @@ export default class workoutTypeController {
     }
   };
 
-  public deleteworkoutTypeController = async (req: Request, res: Response) => {
+  export const  deleteworkoutTypeController = async (req: Request, res: Response) => {
     const { Id } = req.params;
     try {
       let workoutTypeDeleteResults =
-        await this.workoutTypeService.deleteworkoutTypeRepository(Id);
+        await WorkoutTypeService.deleteworkoutTypeRepository(Id);
 
       if (workoutTypeDeleteResults !== 1) {
         return res.status(400).json({
@@ -128,4 +122,4 @@ export default class workoutTypeController {
       });
     }
   };
-}
+

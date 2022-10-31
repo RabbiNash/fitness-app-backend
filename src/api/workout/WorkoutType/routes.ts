@@ -1,5 +1,5 @@
 import { Router } from "express";
-import workoutTypeController from "./workoutType.controller";
+import * as WorkoutTypeController from "./workoutType.controller";
 
 const workoutTypeRouter = Router();
 
@@ -28,10 +28,7 @@ const workoutTypeRouter = Router();
  *       400:
  *         description: Bad request
  */
-workoutTypeRouter.post(
-  "/",
-  new workoutTypeController().addworkoutTypeController
-);
+workoutTypeRouter.post("/", WorkoutTypeController.addworkoutTypeController);
 /**
  * @openapi
  * '/api/v1/workout/type/{Id}':
@@ -58,10 +55,7 @@ workoutTypeRouter.post(
  *
  *
  */
-workoutTypeRouter.get(
-  "/:Id",
-  new workoutTypeController().getworkoutTypeController
-);
+workoutTypeRouter.get("/:Id", WorkoutTypeController.getworkoutTypeController);
 
 /**
  * @openapi
@@ -82,10 +76,7 @@ workoutTypeRouter.get(
  *
  *
  */
-workoutTypeRouter.get(
-  "/",
-  new workoutTypeController().getAllworkoutTypeController
-);
+workoutTypeRouter.get("/", WorkoutTypeController.getAllworkoutTypeController);
 
 /**
  * @openapi
@@ -108,10 +99,7 @@ workoutTypeRouter.get(
  *       500:
  *         description: Server Error
  */
-workoutTypeRouter.patch(
-  "/",
-  new workoutTypeController().upDateworkoutTypeController
-);
+workoutTypeRouter.patch("/", WorkoutTypeController.upDateworkoutTypeController);
 
 /**
  * @openapi
@@ -137,7 +125,7 @@ workoutTypeRouter.patch(
  */
 workoutTypeRouter.delete(
   "/:Id",
-  new workoutTypeController().deleteworkoutTypeController
+  WorkoutTypeController.deleteworkoutTypeController
 );
 
 export default workoutTypeRouter;

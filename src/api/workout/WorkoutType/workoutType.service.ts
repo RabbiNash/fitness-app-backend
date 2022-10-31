@@ -3,8 +3,8 @@ import { WorkoutType } from "./workoutTypemodel";
 import { workoutTypeClass } from "./workoutType.class";
 import { v4 as uuidv4 } from "uuid";
 
-export default class workoutTypeservice {
-  public addworkoutTypeRepository = async (
+
+  export const  addworkoutTypeRepository = async (
     workoutTypeOptions: workoutTypeClass
   ): Promise<any> => {
     let workoutType = await WorkoutType.create({
@@ -15,7 +15,7 @@ export default class workoutTypeservice {
     return workoutType;
   };
 
-  public getworkoutTypeRepository = async (Id: string): Promise<any> => {
+  export const getworkoutTypeRepository = async (Id: string): Promise<any> => {
     try {
       let workoutTypeFound = await WorkoutType.findByPk(Id);
 
@@ -25,7 +25,7 @@ export default class workoutTypeservice {
     }
   };
 
-  public getAllworkoutCategoriesRepository = async (): Promise<any> => {
+  export const getAllworkoutCategoriesRepository = async (): Promise<any> => {
     try {
       let workoutCategoriessFound = await WorkoutType.findAll();
 
@@ -35,7 +35,7 @@ export default class workoutTypeservice {
     }
   };
 
-  public upDateworkoutTypeRepository = async (updateOptions: {
+  export const upDateworkoutTypeRepository = async (updateOptions: {
     [x: string]: any;
   }): Promise<any> => {
     try {
@@ -57,7 +57,7 @@ export default class workoutTypeservice {
     }
   };
 
-  public deleteworkoutTypeRepository = async (Id: string): Promise<any> => {
+  export const deleteworkoutTypeRepository = async (Id: string): Promise<any> => {
     try {
       //return the number of destroyed rows
       let deletedworkoutType = await WorkoutType.destroy({
@@ -71,4 +71,4 @@ export default class workoutTypeservice {
       console.log(error);
     }
   };
-}
+

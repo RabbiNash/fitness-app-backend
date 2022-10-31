@@ -6,7 +6,7 @@ import { WorkoutType } from "../api/workout/WorkoutType/workoutTypemodel";
 /**defining all the relationships in one files coz they are not recognised by the tests
  *
  */
-export const defineRelationships = async () => {
+export const defineRelationships = async () : Promise<boolean>=> {
   WorkoutCategory.hasMany(WorkoutType, {
     foreignKey: {
       allowNull: false,
@@ -27,5 +27,7 @@ export const defineRelationships = async () => {
   });
   Exercise.belongsTo(User);
 
+  let result = Promise.resolve(true)
   console.log("Relationships  initialising done ....!!");
+  return result;
 };

@@ -1,20 +1,17 @@
-import logger from "pino"
-import dayjs from "dayjs"
+import logger from "pino";
+import dayjs from "dayjs";
 
 const log = logger({
-    transport:{
-        target:"pino-pretty",
-        options:{
-            colorize:true,
-            customColors: 'err:red,info:blue', 
-            ignore: 'pid,hostname',
-        }
+  transport: {
+    target: "pino-pretty",
+    options: {
+      colorize: true,
+      customColors: "err:red,info:blue",
+      ignore: "pid,hostname",
     },
+  },
 
+  timestamp: () => `,"time" : " ${dayjs().format()}"`,
+});
 
-    
-    timestamp:() =>`,"time" : " ${dayjs().format()}"`,
-})
-
-
-export default log
+export default log;

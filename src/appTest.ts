@@ -26,19 +26,6 @@ class App {
     this.express.use("/api/v1", apiV1);
   }
 
-  private async connectToDB(): Promise<void> {
-    try {
-
-      await postgresDdClient.authenticate()
-      await postgresDdClient.sync({ force: true });
-      console.log("database connected successfully !!!");
-        
-    } catch (error) {
-      console.log(error)
-        
-    }
-  
-  }
 
   private catchError(): void {}
 }

@@ -1,92 +1,91 @@
 // import { IdGenerator } from "../../../helpers/helper.IDgenerator.js";
-import workoutTypeModel from "../workoutType/workoutType.model";
-import {workoutTypeClass} from "./workoutType.class";
-import {v4 as uuidv4} from "uuid";
+import {WorkoutType} from "../workoutType/workoutType.model";
+import { workoutTypeClass } from "./workoutType.class";
+import { v4 as uuidv4 } from "uuid";
 
 
 export default class workoutTypeservice {
+ 
 
+  public addworkoutTypeRepository = async (workoutTypeOptions: workoutTypeClass) :Promise<any> => {
+    let workoutType = await WorkoutType.create({
+      ...workoutTypeOptions,
+      Id:uuidv4()
 
-    public addworkoutTypeRepository = async (workoutTypeOptions: workoutTypeClass): Promise<any> => {
-        let workoutType = await workoutTypeModel.create({
-            ...workoutTypeOptions,
-            Id: uuidv4()
+    });
 
-        });
+    return workoutType
+  };
 
-        return workoutType
-    };
+  public getworkoutTypeRepository = async (Id :string):Promise<any> =>{
 
-    public getworkoutTypeRepository = async (Id: string): Promise<any> => {
+    try {
+      let workoutTypeFound  = await WorkoutType.findByPk(Id)
 
-        try {
-            let workoutTypeFound = await workoutTypeModel.findByPk(Id)
+     
+    
+      return workoutTypeFound
+    } catch (error) {
 
+      console.log(error)
+      
+    }
+  }
 
-            return workoutTypeFound
-        } catch (error) {
+  public getAllworkoutCategoriesRepository = async ():Promise<any> =>{
 
-            console.log(error)
+    try {
+      let workoutCategoriessFound  = await WorkoutType.findAll()
+    
+      return workoutCategoriessFound
 
-        }
+    
+    } catch (error) {
+
+      console.log(error)
+      
     }
 
-    public getAllworkoutCategoriesRepository = async (): Promise<any> => {
+  }
 
-        try {
-            let workoutCategoriessFound = await workoutTypeModel.findAll()
+  public upDateworkoutTypeRepository = async (updateOptions: { [x: string]: any; }):Promise<any> =>{
 
-            return workoutCategoriessFound
+    try {
+      //return the number of destroyed rows
+      let workoutTypesFound  = await WorkoutType.update({
+        ...updateOptions
 
-
-        } catch (error) {
-
-            console.log(error)
-
+      } , {
+        where:{
+          Id :updateOptions.Id
         }
+      })
+    
+      return workoutTypesFound
 
+    
+    } catch (error) {
+
+      console.log(error)
+      
     }
 
-    public upDateworkoutTypeRepository = async (updateOptions: { [x: string]: any; }): Promise<any> => {
+  }
 
-        try {
-            //return the number of destroyed rows
-            let workoutTypesFound = await workoutTypeModel.update({
-                ...updateOptions
+  public deleteworkoutTypeRepository = async (Id:string):Promise<any> =>{
+    try {
+      //return the number of destroyed rows
+      let deletedworkoutType  = await WorkoutType.destroy({where:{
+        Id:Id
+      }})
 
-            }, {
-                where: {
-                    Id: updateOptions.Id
-                }
-            })
+    
+      return deletedworkoutType
+    } catch (error) {
 
-            return workoutTypesFound
-
-
-        } catch (error) {
-
-            console.log(error)
-
-        }
-
+      console.log(error)
+      
     }
 
-    public deleteworkoutTypeRepository = async (Id: string): Promise<any> => {
-        try {
-            //return the number of destroyed rows
-            let deletedworkoutType = await workoutTypeModel.destroy({
-                where: {
-                    Id: Id
-                }
-            })
-
-
-            return deletedworkoutType
-        } catch (error) {
-
-            console.log(error)
-
-        }
-
-    }
+  }
 }

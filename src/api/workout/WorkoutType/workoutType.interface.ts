@@ -1,3 +1,5 @@
+
+
 export default interface IUser {
     id?: number;
     displayName: string;

@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> actions2
 export default interface IUser {
     id?: number;
     displayName: string;

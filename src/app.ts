@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import apiV1 from "../src/api/index";
 import postgresDdClient from "./config/pgDb.config";
+import { defineRelationships } from "./config/index";
 
 
 
@@ -32,6 +33,7 @@ class App {
 
       await postgresDdClient.authenticate()
       await postgresDdClient.sync({ alter: true });
+      await defineRelationships()
       console.log("database connected successfully !!!");
         
     } catch (error) {

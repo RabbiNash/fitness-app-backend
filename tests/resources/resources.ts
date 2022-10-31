@@ -1,6 +1,6 @@
 import request from "supertest";
 import { UserClass } from "../../src/api/auth/user/user.class";
-import User from "../../src/api/auth/user/user.model";
+import User from "../../src/api/auth/user/usermodel";
 import { ExerciseClass } from "../../src/api/workout/Excercise/exercise.class";
 import app from "../../src/appTest";
 import * as exerciseController from "../../src/api/workout/Excercise/exercise.controller";

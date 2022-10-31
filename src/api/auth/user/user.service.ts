@@ -1,5 +1,5 @@
 // import { IdGenerator } from "../../../helpers/helper.IDgenerator.js";
-import UserModel from "../user/user.model";
+import UserModel from "./usermodel";
 import { UserClass } from "./user.class";
 import { v4 as uuidv4 } from "uuid";
 

@@ -1,4 +1,4 @@
-import User from "../api/auth/user/user.model"
+import User from "../api/auth/user/usermodel"
 import Exercise from "../api/workout/Excercise/exercisemodel"
 import WorkoutCategory from "../api/workout/WorkoutCategory/workoutCategorymodel"
 import { WorkoutType } from "../api/workout/WorkoutType/workoutTypemodel"

@@ -1,7 +1,7 @@
 import User from "../api/auth/user/user.model"
-import Exercise from "../api/workout/Excercise/exercise.model"
+import Exercise from "../api/workout/Excercise/exercisemodel"
 import WorkoutCategory from "../api/workout/WorkoutCategory/workoutCategorymodel"
-import { WorkoutType } from "../api/workout/workoutType/workoutType.model"
+import { WorkoutType } from "../api/workout/WorkoutType/workoutTypemodel"
 
 /**defining all the relationships in one files coz they are not recognised by the tests
  * 

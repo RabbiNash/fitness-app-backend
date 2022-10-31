@@ -1,5 +1,5 @@
 // import { IdGenerator } from "../../../helpers/helper.IDgenerator.js";
-import {WorkoutType} from "../workoutType/workoutType.model";
+import {WorkoutType} from "./workoutTypemodel";
 import { workoutTypeClass } from "./workoutType.class";
 import { v4 as uuidv4 } from "uuid";
 

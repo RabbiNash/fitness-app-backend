@@ -1,5 +1,5 @@
 // import { IdGenerator } from "../../../helpers/helper.IDgenerator.js";
-import ExerciseModel from "./exercise.model"
+import ExerciseModel from "./exercisemodel"
 import { ExerciseClass } from "./exercise.class";
 import { v4 as uuidv4 } from "uuid";
 

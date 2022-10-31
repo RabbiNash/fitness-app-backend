@@ -4,28 +4,31 @@ import { workoutTypeClass } from "./workoutType.class";
 import workoutTypeservice from "./workoutType.service";
 
 export default class workoutTypeController {
-  
   private workoutTypeService: workoutTypeservice;
 
-  constructor(){
-    this.workoutTypeService = new workoutTypeservice()
+  constructor() {
+    this.workoutTypeService = new workoutTypeservice();
   }
 
   public addworkoutTypeController = async (req: Request, res: Response) => {
-    
-    const { workoutTypeName , workoutTypeNotes,workoutCategoryId } = req.body;
-    let newworkoutType = new workoutTypeClass(workoutTypeName , workoutTypeNotes , workoutCategoryId);
-    
+    const { workoutTypeName, workoutTypeNotes, workoutCategoryId } = req.body;
+    let newworkoutType = new workoutTypeClass(
+      workoutTypeName,
+      workoutTypeNotes,
+      workoutCategoryId
+    );
+
     try {
-      let workoutTypeResult = await this.workoutTypeService.addworkoutTypeRepository(newworkoutType)
+      let workoutTypeResult =
+        await this.workoutTypeService.addworkoutTypeRepository(newworkoutType);
 
       return res.json({
         success: true,
-        msg:"workoutType was successfully created !! ",
-        workoutType :workoutTypeResult
+        msg: "workoutType was successfully created !! ",
+        workoutType: workoutTypeResult,
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return res.status(500).json({
         success: false,
         msg: `${error}`,
@@ -33,26 +36,23 @@ export default class workoutTypeController {
     }
   };
 
-
   //get workoutType by id
   public getworkoutTypeController = async (req: Request, res: Response) => {
-    const { Id } = req.params
+    const { Id } = req.params;
     try {
+      let workoutTypeFound =
+        await this.workoutTypeService.getworkoutTypeRepository(Id);
 
-      let workoutTypeFound = await this.workoutTypeService.getworkoutTypeRepository(Id)
-
-      if( workoutTypeFound == null){
+      if (workoutTypeFound == null) {
         return res.status(400).json({
-          success:false,
-          msg:"No entry was found please provide a valid workoutTypeId !!"
-        })
-
+          success: false,
+          msg: "No entry was found please provide a valid workoutTypeId !!",
+        });
       }
-      
 
       return res.json({
         success: true,
-        workoutType:workoutTypeFound
+        workoutType: workoutTypeFound,
       });
     } catch (error) {
       return res.status(500).json({
@@ -63,17 +63,13 @@ export default class workoutTypeController {
   };
 
   public getAllworkoutTypeController = async (req: Request, res: Response) => {
- 
-   
-    
     try {
-
-      let workoutTypesFound = await this.workoutTypeService.getAllworkoutCategoriesRepository()
-      
+      let workoutTypesFound =
+        await this.workoutTypeService.getAllworkoutCategoriesRepository();
 
       return res.json({
         success: true,
-        workoutCategories:workoutTypesFound
+        workoutCategories: workoutTypesFound,
       });
     } catch (error) {
       return res.status(500).json({
@@ -83,22 +79,22 @@ export default class workoutTypeController {
     }
   };
   public upDateworkoutTypeController = async (req: Request, res: Response) => {
-
     try {
+      let workoutTypeUpdateResults =
+        await this.workoutTypeService.upDateworkoutTypeRepository({
+          ...req.body,
+        });
 
-      let workoutTypeUpdateResults = await this.workoutTypeService.upDateworkoutTypeRepository({...req.body})
-
-      if( workoutTypeUpdateResults[0] !== 1 ){
+      if (workoutTypeUpdateResults[0] !== 1) {
         return res.status(400).json({
-          success:false,
-          msg:"No entry was updated please provide a valid workoutTypeId !!"
-        })
-
+          success: false,
+          msg: "No entry was updated please provide a valid workoutTypeId !!",
+        });
       }
 
       return res.json({
         success: true,
-        msg:"workoutType was successfully updated "
+        msg: "workoutType was successfully updated ",
       });
     } catch (error) {
       return res.status(500).json({
@@ -109,28 +105,21 @@ export default class workoutTypeController {
   };
 
   public deleteworkoutTypeController = async (req: Request, res: Response) => {
-
-    const { Id } = req.params
+    const { Id } = req.params;
     try {
+      let workoutTypeDeleteResults =
+        await this.workoutTypeService.deleteworkoutTypeRepository(Id);
 
-      let workoutTypeDeleteResults = await this.workoutTypeService.deleteworkoutTypeRepository(Id)
-
-
-    
-
-     
-
-      if( workoutTypeDeleteResults !== 1 ){
+      if (workoutTypeDeleteResults !== 1) {
         return res.status(400).json({
-          success:false,
-          msg:"No entry was deleted please provide a valid workoutTypeId !!"
-        })
-
+          success: false,
+          msg: "No entry was deleted please provide a valid workoutTypeId !!",
+        });
       }
 
       return res.json({
         success: true,
-        msg:"Entry  was successfully deleted  "
+        msg: "Entry  was successfully deleted  ",
       });
     } catch (error) {
       return res.status(500).json({
@@ -139,5 +128,4 @@ export default class workoutTypeController {
       });
     }
   };
-  
 }

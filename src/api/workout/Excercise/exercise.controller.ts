@@ -18,7 +18,7 @@ export const addexerciseController = async (req: Request, res: Response) => {
   const requiredPars = ["workoutTypeId", "userId"];
 
   let missingParams = await CheckMissingParams(requiredPars, req.body);
- 
+
   let newexercise = new ExerciseClass(
     exerciseName,
     exerciseNotes,
@@ -32,14 +32,13 @@ export const addexerciseController = async (req: Request, res: Response) => {
 
   try {
     if (missingParams.length >= 1) {
-      
       return res.status(400).json({
-        success:false,
-        msg:"The following params are required",
-        missingParams:missingParams
-      })
+        success: false,
+        msg: "The following params are required",
+        missingParams: missingParams,
+      });
     }
-  
+
     let exerciseResult = await exerciseService.addexerciseRepository(
       newexercise
     );
@@ -49,7 +48,6 @@ export const addexerciseController = async (req: Request, res: Response) => {
       msg: "exercise was successfully created !! ",
       exercise: exerciseResult,
     });
- 
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -105,7 +103,7 @@ export const upDateexerciseController = async (req: Request, res: Response) => {
       ...req.body,
     });
 
-    console.log(exerciseUpdateResults + "from controller")
+    console.log(exerciseUpdateResults + "from controller");
 
     if (exerciseUpdateResults[0] !== 1) {
       return res.status(400).json({
@@ -132,8 +130,6 @@ export const deleteexerciseController = async (req: Request, res: Response) => {
     let exerciseDeleteResults = await exerciseService.deleteexerciseRepository(
       Id
     );
-
-    
 
     if (exerciseDeleteResults !== 1) {
       return res.status(400).json({

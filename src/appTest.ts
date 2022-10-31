@@ -4,7 +4,6 @@ import morgan from "morgan";
 import apiV1 from "./api/index";
 import postgresDdClient from "./config/pgDb.config";
 
-
 class App {
   public express: express.Application;
 
@@ -25,7 +24,6 @@ class App {
   private setRoutes(): void {
     this.express.use("/api/v1", apiV1);
   }
-
 
   private catchError(): void {}
 }

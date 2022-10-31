@@ -5,8 +5,6 @@ import apiV1 from "../src/api/index";
 import postgresDdClient from "./config/pgDb.config";
 import { defineRelationships } from "./config/index";
 
-
-
 class App {
   public express: express.Application;
 
@@ -30,17 +28,13 @@ class App {
 
   private async connectToDB(): Promise<void> {
     try {
-
-      await postgresDdClient.authenticate()
+      await postgresDdClient.authenticate();
       await postgresDdClient.sync({ alter: true });
-      await defineRelationships()
+      await defineRelationships();
       console.log("database connected successfully !!!");
-        
     } catch (error) {
-      console.log(error)
-        
+      console.log(error);
     }
-  
   }
 
   private catchError(): void {}

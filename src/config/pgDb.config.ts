@@ -6,4 +6,4 @@ let postgresDdClient = new Sequelize("fitness_db", "postgres", "1311", {
   logging: false,
 });
 
-export default postgresDdClient
+export default postgresDdClient;

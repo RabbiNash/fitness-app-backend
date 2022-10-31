@@ -1,7 +1,12 @@
 /** This file contains the tests onthe creattion of a workout */
 
 import * as exerciseservice from "../../src/api/workout/Excercise/exercise.service";
-import { app, exerciseInput, exerciseInstance, request } from "../resources/resources";
+import {
+  app,
+  exerciseInput,
+  exerciseInstance,
+  request,
+} from "../resources/resources";
 
 describe("Exersise controllers  Tests", () => {
   describe("given all the properties the controller should return  success, message ,and exercise object", () => {
@@ -137,7 +142,9 @@ describe("Exersise controllers  Tests", () => {
 
         const { success, msg } = await exerciseDeletionRes.body;
         expect(success).toBe(false);
-        expect(msg).toBe("No entry was deleted please provide a valid exerciseId !!");
+        expect(msg).toBe(
+          "No entry was deleted please provide a valid exerciseId !!"
+        );
       });
     });
   });
@@ -146,7 +153,7 @@ describe("Exersise controllers  Tests", () => {
    * Test case 4  :Updating the exercise
    */
 
-   describe("Upadating  Exercises !!!! ", () => {
+  describe("Upadating  Exercises !!!! ", () => {
     describe("given valid exerciseId", () => {
       //@ts-ignore
       let exerciseServiceMock = jest
@@ -155,24 +162,23 @@ describe("Exersise controllers  Tests", () => {
       // return  value of  1 means updating
 
       test("should have success , msg  fields in body", async () => {
-        let exerciseUpadateRes = await request(app).patch(
-          "/api/v1/workout/exercise").send({
-            ...exerciseInstance
+        let exerciseUpadateRes = await request(app)
+          .patch("/api/v1/workout/exercise")
+          .send({
+            ...exerciseInstance,
           });
         const { success, msg } = await exerciseUpadateRes.body;
 
-        expect(exerciseUpadateRes.body).toHaveProperty("success")
-        expect(exerciseUpadateRes.body).toHaveProperty("msg")
-        
+        expect(exerciseUpadateRes.body).toHaveProperty("success");
+        expect(exerciseUpadateRes.body).toHaveProperty("msg");
       });
     });
 
     describe("given Invalid exerciseId", () => {
-
-     //@ts-ignore
-     let exerciseServiceMock = jest
-     .spyOn(exerciseservice, "upDateexerciseRepository")
-     .mockResolvedValueOnce([0]);
+      //@ts-ignore
+      let exerciseServiceMock = jest
+        .spyOn(exerciseservice, "upDateexerciseRepository")
+        .mockResolvedValueOnce([0]);
 
       test("should have success :false , msg,exercise  fields in body", async () => {
         let exerciseDeletionRes = await request(app).patch(
@@ -180,13 +186,9 @@ describe("Exersise controllers  Tests", () => {
         );
 
         const { success, msg } = await exerciseDeletionRes.body;
-        expect(success).toBe(false)
+        expect(success).toBe(false);
         // expect(msg).toBe("No entry was updated please provide a valid exerciseId !!"); ToDo
       });
     });
   });
-
-
-
-
 });

@@ -3,87 +3,72 @@ import workoutCategoryModel from "./workoutCategorymodel";
 import { workoutCategoryClass } from "./workoutCategoryclass";
 import { v4 as uuidv4 } from "uuid";
 
-
 export default class workoutCategoryservice {
- 
-
-  public addworkoutCategoryRepository = async (workoutCategoryOptions: workoutCategoryClass) :Promise<any> => {
+  public addworkoutCategoryRepository = async (
+    workoutCategoryOptions: workoutCategoryClass
+  ): Promise<any> => {
     let workoutCategory = await workoutCategoryModel.create({
       ...workoutCategoryOptions,
-      Id:uuidv4()
-
+      Id: uuidv4(),
     });
 
-    return workoutCategory
+    return workoutCategory;
   };
 
-  public getworkoutCategoryRepository = async (Id :string):Promise<any> =>{
-
+  public getworkoutCategoryRepository = async (Id: string): Promise<any> => {
     try {
-      let workoutCategoryFound  = await workoutCategoryModel.findByPk(Id)
-    
-      return workoutCategoryFound
+      let workoutCategoryFound = await workoutCategoryModel.findByPk(Id);
+
+      return workoutCategoryFound;
     } catch (error) {
-
-      console.log(error)
-      
+      console.log(error);
     }
-  }
+  };
 
-  public getAllworkoutCategoriesRepository = async ():Promise<any> =>{
-
+  public getAllworkoutCategoriesRepository = async (): Promise<any> => {
     try {
-      let workoutCategoriessFound  = await workoutCategoryModel.findAll()
-    
-      return workoutCategoriessFound
+      let workoutCategoriessFound = await workoutCategoryModel.findAll();
 
-    
+      return workoutCategoriessFound;
     } catch (error) {
-
-      console.log(error)
-      
+      console.log(error);
     }
+  };
 
-  }
-
-  public upDateworkoutCategoryRepository = async (updateOptions: { [x: string]: any; }):Promise<any> =>{
-
+  public upDateworkoutCategoryRepository = async (updateOptions: {
+    [x: string]: any;
+  }): Promise<any> => {
     try {
       //return the number of destroyed rows
-      let workoutCategorysFound  = await workoutCategoryModel.update({
-        ...updateOptions
-
-      } , {
-        where:{
-          Id :updateOptions.Id
+      let workoutCategorysFound = await workoutCategoryModel.update(
+        {
+          ...updateOptions,
+        },
+        {
+          where: {
+            Id: updateOptions.Id,
+          },
         }
-      })
-    
-      return workoutCategorysFound
+      );
 
-    
+      return workoutCategorysFound;
     } catch (error) {
-
-      console.log(error)
-      
+      console.log(error);
     }
+  };
 
-  }
-
-  public deleteworkoutCategoryRepository = async (Id:string):Promise<any> =>{
+  public deleteworkoutCategoryRepository = async (Id: string): Promise<any> => {
     try {
       //return the number of destroyed rows
-      let deletedworkoutCategory  = await workoutCategoryModel.destroy({where:{
-        Id:Id
-      }})
+      let deletedworkoutCategory = await workoutCategoryModel.destroy({
+        where: {
+          Id: Id,
+        },
+      });
 
-    
-      return deletedworkoutCategory
+      return deletedworkoutCategory;
     } catch (error) {
-
-      console.log(error)
-      
+      console.log(error);
     }
-
-  }
+  };
 }

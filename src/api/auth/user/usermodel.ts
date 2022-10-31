@@ -1,15 +1,11 @@
-import { DataTypes ,Sequelize } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import postgresDdClient from "../../../config/pgDb.config";
-import { v4 as uuidv4 } from 'uuid';
-
-
-
+import { v4 as uuidv4 } from "uuid";
 
 const User = postgresDdClient.define("user", {
   Id: {
     type: DataTypes.STRING,
     primaryKey: true,
-  
   },
   displayName: {
     type: DataTypes.STRING,

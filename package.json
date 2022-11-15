@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node  src/index.ts",
+    "build": "tsc",
+    "production": "ts-node  src/index.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
     "test": "jest"
   },
@@ -25,6 +27,7 @@
     "sequelize": "^6.24.0",
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.5.0",
+    "tsc": "^2.0.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

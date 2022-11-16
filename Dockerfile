@@ -13,7 +13,7 @@ COPY . .
 
 # RUN npm run build
 
-# COPY --from=builder /usr/src/app/dist ./dist
+
 
 EXPOSE 8000
 CMD [ "node", "usr/src/app/dist/index.js" ]
